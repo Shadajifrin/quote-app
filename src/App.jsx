@@ -16,15 +16,23 @@ function App() {
     }
   )
   },[]);
-
-   
+    let fetchNewQuote =() =>
+    fetch("http://api.quotable.io/random")
+    .then(res=>res.json())
+    .then(
+      (quote) =>{
+       setQuote(quote.content);
+       setAuthor(quote.author);
+       console.log(quote);
+      }
+    )
   return (
   <div className='App'>
     <div className='quote'>
       <h2>{quote}</h2>
       <small>{author}</small>
     </div><br />
-    <button className='btn'>Generate new quote</button>
+    <button className='btn' onClick={fetchNewQuote}>Generate new quote</button>
   </div>
   )
 }
