@@ -6,26 +6,17 @@ function App() {
   const[author,setAuthor]= useState("");
   //http://api.quotable.io/random
   useEffect(() =>{
-  fetch("http://api.quotable.io/random")
-  .then(res=>res.json())
-  .then(
-    (quote) =>{
-     setQuote(quote.content);
-     setAuthor(quote.author);
-     console.log(quote);
-    }
-  )
+  fetchData();
   },[]);
-    let fetchNewQuote =() =>
-    fetch("http://api.quotable.io/random")
-    .then(res=>res.json())
-    .then(
-      (quote) =>{
-       setQuote(quote.content);
-       setAuthor(quote.author);
-       console.log(quote);
+
+    const  fetchData =async() =>{
+    const response=await fetch("http://api.quotable.io/random");
+    const data=await response.json();
+    console.log(data);
+    setQuote(data.content);
+    setAuthor(data.author);
       }
-    )
+  
   return (
   <div className='App'>
     <div className='quote'>
