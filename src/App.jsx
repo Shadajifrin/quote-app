@@ -23,7 +23,7 @@ function App() {
       <h2>{quote}</h2>
       <small>{author}</small>
     </div><br />
-    <button className='btn' onClick={fetchNewQuote}>Generate new quote</button>
+    <button className='btn' onClick={fetchData}>Generate new quote</button>
   </div>
   )
 }
